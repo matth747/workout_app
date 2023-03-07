@@ -1,0 +1,11 @@
+import React from 'react';
+
+const Footer = () => {
+    return (
+        <footer>
+            <h6>
+                Footer
+            </h6>
+        </footer>
+    )
+}
