@@ -8,33 +8,13 @@ const resolvers = {
       if (context.user) {
         const userData = await User.findOne({ _id: context.user._id })
           .select('-__v -password')
-          .populate('posts')
-
 
         return userData;
       }
 
       throw new AuthenticationError('Not logged in');
     },
-    users: async () => {
-      return User.find()
-        .select('-__v -password')
-        .populate('posts')
 
-    },
-    user: async (parent, { username }) => {
-      return User.findOne({ username })
-        .select('-__v -password')
-
-        .populate('posts');
-    },
-    posts: async (parent, { username }) => {
-      const params = username ? { username } : {};
-      return Post.find(params).sort({ createdAt: -1 });
-    },
-    post: async (parent, { _id }) => {
-      return Post.findOne({ _id });
-    }
   },
 
   Mutation: {
@@ -60,28 +40,6 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
-    addWorkout: async (parent, args, context) => {
-      if (context.user) {
-      const newPost = await Post.create({ ...args, username: context.user.username });
-        return newPost;
-      }
-
-      throw new AuthenticationError('You need to be logged in!');
-    },
-    addOnToWorkout: async (parent, { postId, commentBody }, context) => {
-      if (context.user) {
-        const updatedPost = await Post.findOneAndUpdate(
-          { _id: postId },
-          { $push: { comments: { commentBody, username: context.user.username } } },
-          { new: true, runValidators: true }
-        );
-
-        return updatedPost;
-      }
-
-      throw new AuthenticationError('You need to be logged in!');
-    },
-
   }
 };
 
