@@ -3,12 +3,12 @@ const { Schema } = require('mongoose');
 const setSchema = new Schema(
   {
     weight: {
-      type: Number,
+      type: String,
       required: false,
 
     },
     reps: {
-      type: Number,
+      type: String,
       required: true,
     },
     username: {
