@@ -1,5 +1,5 @@
 const { AuthenticationError } = require('apollo-server-express');
-const { User, Workout } = require('../models');
+const { User, Workout, Activity } = require('../models');
 const { signToken } = require('../utils/auth');
 
 const resolvers = {
@@ -40,6 +40,38 @@ const resolvers = {
       const token = signToken(user);
       return { token, user };
     },
+    createWorkout: async (parent, args, context) => {
+      if (context.user)
+      {
+      const newWorkout = await Workout.create({ ...args, username: context.user.username});
+      return newWorkout;
+      }
+      throw new AuthenticationError('You need to be logged in!');
+
+    },
+    createActivity: async (parent, args, context) => {
+      if (context.user) {
+        const updatedWorkout = await Activity.create({ ...args, username: context.user.username});
+
+        return updatedWorkout;
+      }
+
+      throw new AuthenticationError('You need to be logged in!');
+    },
+    addSet: async (parent, {  activityId, weight, reps }, context) => {
+      if (context.user) {
+        const updatedActivity = await Activity.findOneAndUpdate(
+          { _id: activityId },
+          { $push: { sets: { weight, reps, username: context.user.username } } },
+          { new: true, runValidators: true }
+        );
+
+        return updatedActivity;
+      }
+
+      throw new AuthenticationError('You need to be logged in!');
+    },
+
   }
 };
 

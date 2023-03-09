@@ -14,7 +14,7 @@ import Footer from './components/Footer';
 import Home from './pages/Home';
 import Login from './pages/Login';
 
-import Signup from './pages/Signup';
+import Signup from './pages/SignUp';
 
 const httpLink = createHttpLink({
   uri: '/graphql',
@@ -40,7 +40,7 @@ function App() {
   return (
     <ApolloProvider client={client}>
       <Router>
-        <div className="flex-column justify-flex-start min-100-vh">
+        <div >
           <Header />
           <div className="container">
             <Routes>

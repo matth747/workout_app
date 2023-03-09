@@ -6,6 +6,9 @@ const Header = () => {
             <h1>
                 Rack Track and Max
             </h1>
+            
         </header>
     )
 }
+
+export default Header;

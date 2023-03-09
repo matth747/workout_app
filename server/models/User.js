@@ -20,6 +20,12 @@ const userSchema = new Schema(
       required: true,
       minlength: 5
     },
+    workouts: [
+      {
+        type: Schema.Types.ObjectId,
+        ref: 'Workout'
+      }
+    ],
   },
   {
     toJSON: {
@@ -28,7 +34,7 @@ const userSchema = new Schema(
   }
 );
 
-// set up pre-save middleware to create password
+
 userSchema.pre('save', async function(next) {
   if (this.isNew || this.isModified('password')) {
     const saltRounds = 10;
