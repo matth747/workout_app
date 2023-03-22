@@ -33,6 +33,7 @@ const typeDefs = gql`
 
   type Query {
     me: User
+    workout(workoutId: ID!): Workout 
 
   }
 

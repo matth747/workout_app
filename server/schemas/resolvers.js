@@ -8,13 +8,21 @@ const resolvers = {
       if (context.user) {
         const userData = await User.findOne({ _id: context.user._id })
           .select('-__v -password')
+          .populate('workouts')
 
         return userData;
       }
 
       throw new AuthenticationError('Not logged in');
     },
-
+    workout: async (parent, {workoutId}, context) => {
+      if (context.user) {
+        const workData = await Workout.findOne({ _id: workoutId })
+        .populate('activities')
+        return workData
+      }
+    throw new AuthenticationError('Not logged in');
+    }
   },
 
   Mutation: {
@@ -44,15 +52,25 @@ const resolvers = {
       if (context.user)
       {
       const newWorkout = await Workout.create({ ...args, username: context.user.username});
+      
+      await User.findOneAndUpdate(
+        { _id: context.user._id},
+        { $addToSet: { workouts: newWorkout._id}}
+      )
+
       return newWorkout;
       }
       throw new AuthenticationError('You need to be logged in!');
 
     },
-    createActivity: async (parent, args, context) => {
+    createActivity: async (parent, {workoutId, activityName}, context) => {
       if (context.user) {
-        const updatedWorkout = await Activity.create({ ...args, username: context.user.username});
+        const updatedWorkout = await Activity.create({ activityName: activityName, username: context.user.username});
 
+        await Workout.findOneAndUpdate(
+          { _id: workoutId},
+          { $addToSet: { activities: updatedWorkout._id}}
+        )
         return updatedWorkout;
       }
 
