@@ -38,55 +38,54 @@ const Signup = () => {
   };
 
   return (
-    <main className="flex-row justify-center mb-4">
-      <div className="col-12 col-md-6">
-        <div className="card">
+    <main className="row">
+        <div className="card col-6">
           <h4 className="card-header">Sign Up</h4>
           <div className="card-body">
-            <form onSubmit={handleFormSubmit}>
-              <input
-                className="form-input"
-                placeholder="Enter Your Username"
-                name="username"
-                type="username"
-                id="username"
-                value={formState.username}
-                onChange={handleChange}
-              />
-              <input
-                className="form-input"
-                placeholder="Enter Your Email"
+            
+          <form>
+          <div className="form-group">
+              <label for="username">Username</label>
+              <input 
+              type="username" 
+              className="form-control" 
+              id="username" 
+              name="username"
+              placeholder="Username"
+              value={formState.username}
+              onChange={handleChange}
+              ></input>
+            </div>
+            <div className="form-group">
+              <label for="email">Email address</label>
+                <input 
+                type="email" 
+                className="form-control" 
+                id="email" 
                 name="email"
-                type="email"
-                id="email"
+                placeholder="Enter email"
                 value={formState.email}
                 onChange={handleChange}
-              />
-              <input
-                className="form-input"
-                placeholder="******"
-                name="password"
-                type="password"
-                id="password"
-                value={formState.password}
-                onChange={handleChange}
-              />
-           <div class ="flex flex-col justify-center items-center">
-              <button className=" w-100" type="submit"
-            ><a href="#_" className="relative p-0.5 inline-flex items-center justify-center font-bold overflow-hidden group rounded-md">
-            <span className="w-full h-full bg-gradient-to-br from-[#ff8a05] via-[#ff5478] to-[#ff00c6] group-hover:from-[#ff00c6] group-hover:via-[#ff5478] group-hover:to-[#ff8a05] absolute "></span>
-            <span className="relative px-6 py-3 transition-all ease-out bg-gray-900 rounded-md group-hover:bg-opacity-0 duration-400">
-            <span className="relative text-white">Click to Sign Up</span>
-            </span>
-            </a>
-              </button>
-              </div>
-            </form>
+                ></input>
+            </div>
+            <div className="form-group">
+              <label for="password">Password</label>
+              <input type="password" 
+              className="form-control" 
+              id="password" 
+              name="password"
+              placeholder="Password"
+              value={formState.password}
+              onChange={handleChange}
+              ></input>
+            </div>
 
-            {error && <div className='text-center'>😕Sign Up Failed😕</div>}
+            <button type="submit" onClick={handleFormSubmit} className="btn btn-primary mt-2">Submit</button>
+          </form>
+            {error && <div className='text-center'>Signup Failed😕</div>}
           </div>
         </div>
-      </div>
+
     </main>
   );
 };
