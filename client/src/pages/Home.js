@@ -3,15 +3,58 @@ import React from 'react';
 
 import Auth from '../utils/auth';
 
+// Insirational quote api.  Couldn't figure out how to implement. setting aside for now
+// fetch("https://type.fit/api/quotes")
+// .then(function(response) {
+//   return response.json();
+// })
+// .then(function(data) {
+//   const randomData = data[Math.floor(Math.random() * data.length)]
+//   console.log(data)
+//   const quote = randomData.text
+//   return quote
+// })
+
 
 const Home = () => {
 
 
   return (
-    <main>
-        <p>this p tag represents the home page</p>
+    <main className='row'>
+      <div className='col-12'>
+        <h3>
+
+        </h3>
+      </div>
+      <div className='col-4'>
+        <h1>Rack</h1>
+        <button className='btn btn-info'>
+          <h3 className='p-5'>
+          View Workouts
+          </h3>
+        </button>
+        </div>
+
+        <div className='col-4'>
+        <h1>Track</h1>
+        <button className='btn btn-info'>
+          <h3 className='p-5'>
+          View Activity
+          </h3>
+        </button>
+        </div>
+
+        <div className='col-4'>
+        <h1>Max</h1>
+        <button className='btn btn-info'>
+          <h3 className='p-5'>
+          Start Workout
+          </h3>
+        </button>
+        </div>
+
     </main>
   );
-};
+}
 
 export default Home;

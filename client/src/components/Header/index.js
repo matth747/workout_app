@@ -2,11 +2,12 @@ import React from 'react';
 
 const Header = () => {
     return (
-        <header>
-            <h1>
-                Rack Track and Max
+        <header className='container'>
+            <div className='row'>
+            <h1 className='col-12'>
+                RTM
             </h1>
-            
+            </div>
         </header>
     )
 }
