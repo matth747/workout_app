@@ -4,3 +4,7 @@ header {
 h1 {
     font-size: 70px;
 }
+a {
+    color: black;
+    text-decoration: none;
+}

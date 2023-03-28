@@ -1,6 +1,5 @@
 import React from 'react';
-
-
+import {Link} from 'react-router-dom'
 import Auth from '../utils/auth';
 
 // Insirational quote api.  Couldn't figure out how to implement. setting aside for now
@@ -47,9 +46,11 @@ const Home = () => {
         <div className='col-4'>
         <h1>Max</h1>
         <button className='btn btn-info'>
+        <Link to='/NewWorkout' >
           <h3 className='p-5'>
           Start Workout
           </h3>
+          </Link>
         </button>
         </div>
 

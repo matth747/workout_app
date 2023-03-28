@@ -22,8 +22,16 @@ const resolvers = {
         return workData
       }
     throw new AuthenticationError('Not logged in');
-    }
-  },
+    },
+    // workouts: async (parent, {username}) => {
+    //   const params = username ? { username } : {};
+    //     const workList = await Workout.find(params)
+    //     .populate('activities')
+    //     return workList
+
+    //   }
+    },
+  
 
   Mutation: {
     addUser: async (parent, args) => {

@@ -39,12 +39,12 @@ const Signup = () => {
 
   return (
     <main className="row">
-        <div className="card col-6">
+        <div className="card col-md-8 col-12">
           <h4 className="card-header">Sign Up</h4>
           <div className="card-body">
             
           <form>
-          <div className="form-group">
+            <div className="form-group">
               <label for="username">Username</label>
               <input 
               type="username" 

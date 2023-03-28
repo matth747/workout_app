@@ -24,3 +24,13 @@ export const LOGIN_USER = gql`
     }
   }
 `;
+export const ADD_WORK = gql`
+mutation CreateWorkout($workoutTitle: String) {
+  createWorkout(workoutTitle: $workoutTitle) {
+    _id
+    createdAt
+    username
+    workoutTitle
+  }
+}
+`
