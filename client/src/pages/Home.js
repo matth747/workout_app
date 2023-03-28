@@ -20,34 +20,31 @@ const Home = () => {
 
   return (
     <main className='row'>
-      <div className='col-12'>
-        <h3>
 
-        </h3>
-      </div>
-      <div className='col-4'>
+      <div className='col-lg-4 col-12'>
         <h1>Rack</h1>
-        <button className='btn btn-info'>
-          <h3 className='p-5'>
+        <button className='btn btn-info button-big'>
+          <h3 className=''>
           View Workouts
           </h3>
         </button>
         </div>
 
-        <div className='col-4'>
+
+        <div className='col-lg-4 col-12'>
         <h1>Track</h1>
-        <button className='btn btn-info'>
-          <h3 className='p-5'>
+        <button className='btn btn-info button-big'>
+          <h3 className=''>
           View Activity
           </h3>
         </button>
         </div>
 
-        <div className='col-4'>
+        <div className='col-lg-4 col-12'>
         <h1>Max</h1>
-        <button className='btn btn-info'>
+        <button className='btn btn-info button-big'>
         <Link to='/NewWorkout' >
-          <h3 className='p-5'>
+          <h3 className=''>
           Start Workout
           </h3>
           </Link>

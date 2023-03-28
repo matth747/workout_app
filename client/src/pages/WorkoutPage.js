@@ -1,48 +1,43 @@
-import { useMutation } from "@apollo/client";
-import React, { useState } from "react";
-import { redirect } from 'react-router-dom'
+import React from "react";
 
-import Auth from '../utils/auth'
-import { ADD_WORK } from "../utils/mutations";
-
-const NewWorkout = () => {
-    const[workoutState, setWorkState] = useState({
-        workoutTitle: '',
-    });
-    let username = '';
-    const expired = Auth.isTokenExpired(Auth.getToken());
-    if (!expired) {
-        username = Auth.getUsername();
-    }
+const WorkoutPage = () => {
+    // const[workoutState, setWorkState] = useState({
+    //     workoutTitle: '',
+    // });
+    // let username = '';
+    // const expired = Auth.isTokenExpired(Auth.getToken());
+    // if (!expired) {
+    //     username = Auth.getUsername();
+    // }
     
-    const[createWorkout, {error}] = useMutation(ADD_WORK)
+    // const[createWorkout, {error}] = useMutation(ADD_WORK)
     
-    const handleChange = (event) => {
-        const { name, value } = event.target;
-        setWorkState({
-            ...workoutState,
-            [name]: value,
-        })
+    // const handleChange = (event) => {
+    //     const { name, value } = event.target;
+    //     setWorkState({
+    //         ...workoutState,
+    //         [name]: value,
+    //     })
         
-    };
+    // };
     
-    const handleFormSubmit = async (event) => {
-        event.preventDefault();
-        try {
-            await createWorkout({
-                variables: { ...workoutState },
-            });
-
-            redirect('/workoutpage')
-        } catch (e) {
-            console.error(e);
-        }
-
-    };
+    // const handleFormSubmit = async (event) => {
+    //     event.preventDefault();
+    //     try {
+    //         await createWorkout({
+    //             variables: { ...workoutState },
+    //         });
+    //         return redirect("/WorkoutPage")
+            
+    //         // setWorkState('');
+    //     } catch (e) {
+    //         console.error(e);
+    //     }
+    // };
     
     return (
         <main className="row">
-        {Auth.loggedIn() ? (
+        {/* {Auth.loggedIn() ? (
             <div className="card col-12 col-md-8">
                 <h4 className="card-header">Name Workout</h4>
                 <div className="card-body">
@@ -67,10 +62,10 @@ const NewWorkout = () => {
         </div>) : (
             <>
             <h2>Please Login to record workout</h2>
-            </>)}
-            
+            </>)} */}
+            <p>hello</p>
             </main>
             )
         }
         
-        export default NewWorkout
+        export default WorkoutPage
